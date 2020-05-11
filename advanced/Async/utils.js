@@ -139,6 +139,7 @@ for (let line of lines) {
     // de pares [ayuntamiento, número de playas]. Como los arrays tienen la función 'sort'
     // podremos usarla para ordenarla por número de playas.
     const listOfBeachesPerCouncil = Object.entries(counters);  // probad a pintar en pantalla esta variable
+    console.log(listOfBeachesPerCouncil);
 
     // ordenamos por número de playas
     const listOfBeachesSorted = listOfBeachesPerCouncil.sort( (a,b) => b[1] - a[1]);

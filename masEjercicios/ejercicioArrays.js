@@ -212,96 +212,116 @@ let countLoro = 0;
 let countAraña = 0
 let countGato = 0
 
-// const animal = persons.map((person) => person.pet)
-//                       .map((person.pet) => 
-//                       .filter((person,index) => {
-//                             if (person.pet === pets[index].name && pets.animal === 'perro'){
-//                                 countPerro++;
-//                                 console.log(countPerro);
-//                             }
+ persons.map((person) => person.pet)
+                      .map((person,index) => {
+                            if (person === pets[index].name && pets[index].animal === 'perro'){
+                                countPerro++;
+                            }
+                            if (person === pets[index].name && pets[index].animal === 'araña'){
+                              countAraña++;
+                            }
+                            if (person === pets[index].name && pets[index].animal === 'gato'){
+                              countGato++;
+                            }
+                            if (person === pets[index].name && pets[index].animal === 'loro'){
+                              countLoro++;
+                            }
 
-//                       });
+                      });
 
-// // 12. Número total de patas de las mascotas de las personas. FALTA POR HACER
-
-
-// const totalNumberOfPaws = pets.map((pet) => pet.name)
-//                           .filter((pet) => {
-
-//                             countDogsPawns = 0;
-//                             countCatPawns = 0;
-//                             countSpiderPawns = 0;
-//                             countParrowPawns = 0;
-
-//                             if(pet.name === 'perro'){
-//                                 countDogPawns = countDogPawns + 4;
-//                                 return countDogPawns;
-//                             }
-//                             else if (pet.name === 'gato'){
-//                                 countCatPawns = countCatPawns + 4;
-//                                 return countCatPawns;
-//                             }
-//                             else if (pet.name === 'araña'){
-//                                 countSpiderPawns = countSpiderPawns + 8;
-//                                 return countSpiderPawns;
-//                             }
-//                             else{
-//                                 countParrowPawns === countParrowPawns + 2;
-//                                 return countParrowPawns;
-//                             }
-//  });
-
-//-----------------------------------------------------------------------------
-
-// 13. Array con las personas que tienen animales de 4 patas.
-
-// const peopleWithForLeggedPets = pets.filter((pet) => (pet.animal === 'perro' || pet.animal === 'gato'))
-//                                     .map((persons) => persons.name === pet.name);
-// console.log(peopleWithForLeggedPets);
+console.log(countPerro);
 
 
 
-// Aplicando ejemplos sencillos de map, filter y reduce
+// // // 12. Número total de patas de las mascotas de las personas. FALTA POR HACER
 
-let numbers = [6,42,4,81,56,33];
-console.log(`Array de numeros ${numbers}`);
-let addNumbers = numbers.map((number)=> number + 2);
-console.log(`Añadiendo dos unidades a cada numero del array ${addNumbers}`);
+let countDogsPawns = 0;
+let countCatPawns = 0;
+let countSpiderPawns = 0;
+let countParrowPawns = 0;
 
-let squareNumbers = numbers.map((number) => number * 2);
-console.log(`Elevando al cuadro los numeros del array ${squareNumbers}`);
+const totalNumberOfPaws = pets.map((pet) => pet.name)
+                          .filter((pet) => {
 
-let numbersGreaterTHat30 = numbers.filter((number) => number > 30 );
-console.log(`Mostrando los numeros mayores a 30 ${numbersGreaterTHat30}`);
+                          
 
-let sumNumbers = numbers.reduce((acc,number) => acc + number);
-console.log(`Sumando todos los numeros del array ${sumNumbers}`);
+                            if(pet.name === 'perro'){
+                                countDogPawns = countDogPawns + 4;
+                                return countDogPawns;
+                            }
+                            else if (pet.name === 'gato'){
+                                countCatPawns = countCatPawns + 4;
+                                return countCatPawns;
+                            }
+                            else if (pet.name === 'araña'){
+                                countSpiderPawns = countSpiderPawns + 8;
+                                return countSpiderPawns;
+                            }
+                            else{
+                                countParrowPawns === countParrowPawns + 2;
+                                return countParrowPawns;
+                            }
+ });
+
+// //-----------------------------------------------------------------------------
+
+// // 13. Array con las personas que tienen animales de 4 patas.
+let arrayNombresPersonas = [];
+
+const peopleWithForLeggedPets = pets.filter((pet) => (pet.animal === 'perro' || pet.animal === 'gato'))
+                                    .map((pet) => 
+                                    {
+                                      for(let person of persons){
+                                        if(pet.name === person.pet){
+                                          arrayNombresPersonas.push(person.name);
+                                        }
+                                      }
+                                    }  );
+console.log(arrayNombresPersonas);
 
 
-//Mas ejemplos con Reduce()
 
-// Vamos a sacar el valor mas alto con un operador ternario
+// // Aplicando ejemplos sencillos de map, filter y reduce
 
-let vals = [5,4,1,2,9];
+// let numbers = [6,42,4,81,56,33];
+// console.log(`Array de numeros ${numbers}`);
+// let addNumbers = numbers.map((number)=> number + 2);
+// console.log(`Añadiendo dos unidades a cada numero del array ${addNumbers}`);
 
-// Y como funciona esto pues el primero valor del reduce es simpre el acumulador y el segundo valor es el valor que toma cada vez
-// Esta vez los hemos llamado a y b con lo cual aplicamos un valor ternario y vamos diciendo si a > b entonces a pero si es else
-// entonces b
-let biggest = vals.reduce((a,b) => a > b ? a:b);
-console.log(`El numero mas grande del array es ${biggest}`);
+// let squareNumbers = numbers.map((number) => number * 2);
+// console.log(`Elevando al cuadro los numeros del array ${squareNumbers}`);
 
-let minimun = vals.reduce((a,b) => a < b ? a:b);
-console.log(`El numero mas pequeño del array es ${minimun}`);
+// let numbersGreaterTHat30 = numbers.filter((number) => number > 30 );
+// console.log(`Mostrando los numeros mayores a 30 ${numbersGreaterTHat30}`);
+
+// let sumNumbers = numbers.reduce((acc,number) => acc + number);
+// console.log(`Sumando todos los numeros del array ${sumNumbers}`);
 
 
-// Ahora vamos a hablar de la funcion fill(). La diferencia principal entre las funciones map() y fill() es que map no modifica el array original
-// sino que crea uno nuevo . En el caso de fill si que se que se modifica el array original.
+// //Mas ejemplos con Reduce()
 
-// En el siguiente ejemplo vamos a crear un array de undefined con fill y luego rellenarlo con map con numeros aleatorios que van del 1 al 100
-//
+// // Vamos a sacar el valor mas alto con un operador ternario
 
-let numerosAleatoriosDel1Al100 = Array(100).fill().map(Math.random );
-console.log(numerosAleatoriosDel1Al100);
+// let vals = [5,4,1,2,9];
+
+// // Y como funciona esto pues el primero valor del reduce es simpre el acumulador y el segundo valor es el valor que toma cada vez
+// // Esta vez los hemos llamado a y b con lo cual aplicamos un valor ternario y vamos diciendo si a > b entonces a pero si es else
+// // entonces b
+// let biggest = vals.reduce((a,b) => a > b ? a:b);
+// console.log(`El numero mas grande del array es ${biggest}`);
+
+// let minimun = vals.reduce((a,b) => a < b ? a:b);
+// console.log(`El numero mas pequeño del array es ${minimun}`);
+
+
+// // Ahora vamos a hablar de la funcion fill(). La diferencia principal entre las funciones map() y fill() es que map no modifica el array original
+// // sino que crea uno nuevo . En el caso de fill si que se que se modifica el array original.
+
+// // En el siguiente ejemplo vamos a crear un array de undefined con fill y luego rellenarlo con map con numeros aleatorios que van del 1 al 100
+// //
+
+// let numerosAleatoriosDel1Al100 = Array(100).fill().map(Math.random );
+// console.log(numerosAleatoriosDel1Al100);
 
 
 
