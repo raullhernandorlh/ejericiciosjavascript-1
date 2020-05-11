@@ -229,39 +229,55 @@ let countGato = 0
 
                       });
 
-console.log(countPerro);
-
-
+if(countPerro > countLoro && countPerro > countAraña && countPerro >countGato){
+  console.log(`El perro es el animal que mas gente tiene como mascota.Con un total de ${countPerro} perros` );
+}
+else if (countGato> countLoro && countGato > countPerro && countGato>countAraña){
+  console.log(`El gato es el animal que mas gente tiene como mascota.Con un total de ${countGato} gatos` );
+  }
+else if (countLoro > countAraña && countLoro > countPerro && countLoro >countGato){
+    console.log(`El loro es el animal que mas gente tiene como mascota.Con un total de ${countLoro} loros` );
+  }
+else{
+  console.log(`La araña es el animal que mas gente tiene como mascota.Con un total de ${countAraña} arañas` );
+}
+  
 
 // // // 12. Número total de patas de las mascotas de las personas. FALTA POR HACER
 
-let countDogsPawns = 0;
+
+let countDogPawns = 0;
 let countCatPawns = 0;
 let countSpiderPawns = 0;
 let countParrowPawns = 0;
 
-const totalNumberOfPaws = pets.map((pet) => pet.name)
-                          .filter((pet) => {
+ pets.map((pet) => pet.animal)
+                          .filter((pet) =>
+                           {
 
-                          
-
-                            if(pet.name === 'perro'){
+                            if(pet === 'perro'){
                                 countDogPawns = countDogPawns + 4;
                                 return countDogPawns;
                             }
-                            else if (pet.name === 'gato'){
+                            else if (pet === 'gato'){
                                 countCatPawns = countCatPawns + 4;
                                 return countCatPawns;
                             }
-                            else if (pet.name === 'araña'){
-                                countSpiderPawns = countSpiderPawns + 8;
+                            else if (pet === 'araña'){
+                                 countSpiderPawns = countSpiderPawns + 8;
                                 return countSpiderPawns;
                             }
                             else{
-                                countParrowPawns === countParrowPawns + 2;
+                                 countParrowPawns = countParrowPawns + 2;
                                 return countParrowPawns;
                             }
+                            
  });
+
+ let totalPatas = countDogPawns + countCatPawns + countSpiderPawns + countParrowPawns;
+ console.log(`El numero total de las patas de patas de las mascotas de las personas es igual a ${totalPatas} `);
+ 
+
 
 // //-----------------------------------------------------------------------------
 
@@ -278,6 +294,37 @@ const peopleWithForLeggedPets = pets.filter((pet) => (pet.animal === 'perro' || 
                                       }
                                     }  );
 console.log(arrayNombresPersonas);
+
+
+// 14 A partir del string `**'España'**` obtener un array de personas no infectadas de ese país
+
+let string =`**'España'**` ;
+
+let pelarString = string.substr(3,6);
+console.log(pelarString);
+
+let arrayPersonasNoInfectadas = countries.map((country)=> country)
+                                          .filter((country) =>
+                                          {
+                                            if(country.name === pelarString);
+
+                                        });
+
+console.log(arrayPersonasNoInfectadas)
+
+
+// --------------------------------------------------------------------
+
+// 15. Array de países que tienen personas con loros como mascota.
+
+
+let paisesConLoros = pets.map((pet) => pet.name)
+                        .filter((pet)=>{
+                          if(pet.name == )
+                        });
+
+
+                                       
 
 
 
