@@ -1,25 +1,15 @@
-// Ejercicio de zorros y gallinas con Clases
-
-
-// Creo la clase animal
 class Animal {}
 
-// Creo la clase gallina que extiende de Animal
-
 class Gallina extends Animal {
-  // Breed se traduce como raza
   breed() {
     return new Gallina();
   }
 }
 
-// Creo la clase zorro que extiende de Animal
-
 class Zorro extends Animal {
   breed() {
     return new Zorro();
   }
-
   hunt(establo) {
     return establo.filter((animal) => {
       return animal.constructor.name === 'Zorro';
@@ -49,7 +39,3 @@ const establo = [new Zorro(), new Zorro()];
 const myFarm = new Granja(establo);
 myFarm.closeDoors();
 console.log(establo, myFarm);
-
-
-
-
