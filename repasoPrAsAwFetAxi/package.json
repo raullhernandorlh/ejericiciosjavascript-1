@@ -1,0 +1,22 @@
+{
+  "name": "repasoPrAsAwFetAxi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "browser-sync": "^2.26.7",
+    "fetch-node": "0.0.1",
+    "node": "^14.2.0",
+    "node-fetch": "2.6.0",
+    "unirest": "^0.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browser-sync start --server 'www' --files 'www'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

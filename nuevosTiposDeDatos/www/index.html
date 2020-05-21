@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=;">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Nuevos Tipos de Datos en Javascript</h1>
+        <script>
+            //Simbolos
+            // Para definir un simbolo lo hariamos sin la palabra new
+            // Un Simbolo es como un objeto crea una referencia unica con lo cual si los comparamos daran false
+            // Se les puede poner una etiqueta entre parentesis para diferenciarlos . Ejemplo : let id = Symbol("id")
+            let id = Symbol("id");
+            let  id2 = Symbol("id2");
+            console.log(id,id2);
+
+            const NAME = Symbol("name");
+            const SALUDAR = Symbol("saludar");
+
+            const person = {
+                [NAME]:"Raul",
+                edad:35,
+            };
+            console.log(person);
+            person.NAME = "Raul Lopez";
+            console.log(person);
+            // person.name me da acceso al objeto imprimiendome "Raul Lopez"
+            console.log(person.NAME);
+            // EN el caso de person[NAME] esto me da acceso al simbolo que hemos definido anteriormente dentro del objeto . Se imprime "Raul"
+            console.log(person[NAME]);
+            // Aparte de meter un nombre , un numero ... un Symbol es unico y viene a ser como un objeto. Todo en Javascript es un objeto
+            // y los objetos pueden comportarse de diferentes maneras. Don de quiero llegar es que podemos asociar una funcion a un SYMBOL
+
+            person[SALUDAR] = function(){
+                console.log("Hola");
+            }
+            console.log(person);
+            person[SALUDAR]();
+
+
+            // VAmos a utilizar un "For In" para recorrer las propiedades que estan dentro del objeto persona
+            // Los simbolos son propiedades privadas con lo que si recorremos las propiedades del objeto persona
+            // apareceran las propias de ese objeto pero no los simbolos
+
+            for(let propertie in person){
+                console.log(propertie);
+                console.log(person[propertie]);
+            }
+
+            // Entonces si al listar las propiedades del objeto no me salen las propiedades privadas o simbolos , ¿que puedo hacer?
+            // Pues utilizar un metodo para que te saque los simbolos. Este metodo es " Object.getOwnPropertySymbols" y nos dara un
+            // array con los diferentes tipos de simbolos
+
+            console.log(Object.getOwnPropertySymbols(person));
+
+            // SET
+            // Es un array mejorado que solo acepta valores unicos. Los metodos son diferentes y no utilizariamos length sino que utilizariamos size
+            // para saber la longitud de set . Podemos ver como al añadir o al crear no estan permitidos los repetidos . Por esta razon los elementos
+            // creados o añadidos son menos ya que los repetidos no aparecen
+
+            const set = new Set([1,2,3,4,555,true,{},{},false,"HOLA", "CABALLO"]);
+            console.log(set);
+            console.log(set.size);
+
+            const set2 = new Set();
+            set2.add(1);
+            set2.add(1);
+            set2.add(1);
+            set2.add(true);
+            set2.add(false);
+            set2.add({});
+            console.log(set2);
+            console.log(set2.size);
+
+            for(item of set){
+                console.log(item);
+            }
+
+            // forEach esta implementado para set2 y para array
+            const valoresSet2 = set2.forEach(item => console.log(item))
+
+            // No puedo hacer set[0] porque no esta implementado para set
+            // console.log(set[0]);
+
+            // // ¿Como podria hacer para iterar un set como un array? . Tenemos que convertir el Set en Array con Array from
+            // // Una vez hecho esto ya le podemos aplicar todas los metodos y propiedades del Array
+            //  let arr = Array.from(set);
+            //  console.log(arr);
+            //  console.log(arr.length);
+            //  console.log(arr[0]);
+
+              set2.delete("CABALLO");
+              console.log(valoresSet2);
+              console.log(set2.has("HOLA"));
+
+
+              // MAPS
+
+              // Es muy parecido a un objeto primitivo . Es una coleccion de datos que trabaja muy similar a los getters y a los setters
+
+              let mapa = new Map();
+              mapa.set("nombre","Raul");
+              mapa.set("apellido","Lopez");
+              mapa.set("edad",35);
+            
+              mapa.set(19,"diecinueve");
+              mapa.set(false,"falso");
+              mapa.set({},{});
+              console.log(mapa); 
+              console.log(mapa.size); // Tamaño del map
+              console.log(mapa.has("nombre"))// Evaluar si existe este valor
+              console.log(mapa.get("nombre")) // Cogemos la key del mapa que corresponde a nombre
+              console.log(mapa.set("nombre","Itxaso")); // Rescribimos el value de la key nombre
+              mapa.delete("apellido");
+              console.log(mapa);
+
+              // Para recorrer un map como es un objeto iterable podemos utilizar un for of
+
+              for (let [key,value] of mapa){
+                console.log(`LLave:${key}, Valor:${value} `);  
+              }
+
+
+              const mapa2 = new Map([
+                  ["nombre","Kenai"],
+                  ["edad",7],
+                  ["animal","perro"],
+                  [null,"nulo"]
+              ]);
+
+              console.log(mapa2);
+
+              const llavesMapa2 = [...mapa2.keys()]; // Almacena todas las keys de mapa2 en un array
+              const valoresMapa2 = [...mapa2.values()]; // Almacena todas los values de mapa2 en un array
+
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>
